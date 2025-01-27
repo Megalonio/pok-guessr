@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Guessing Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-area">
+            <div class="image-container">
+                <img id="mainImage" src="" alt="Guess this image">
+                <img id="coverImage" src="" alt="Cover">
+            </div>
+            <div class="guess-area">
+                <div class="score">Score: <span id="score">0</span></div>
+                <div class="attempts">Attempts left: <span id="attempts">5</span></div>
+                <input type="text" id="guessInput" placeholder="Enter your guess...">
+                <button id="submitGuess">Submit Guess</button>
+                <div id="message"></div>
+                <button id="nextImage">Next Image</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
