@@ -16,7 +16,10 @@
             <div class="guess-area">
                 <div class="score">Score: <span id="score">0</span></div>
                 <div class="attempts">Attempts left: <span id="attempts">5</span></div>
-                <input type="text" id="guessInput" placeholder="Enter your guess...">
+                <input type="text" id="guessInput" list="pokemonSuggestions" placeholder="Enter your guess...">
+                <datalist id="pokemonSuggestions">
+                    <!-- Options will be dynamically added here -->
+                </datalist>
                 <button id="submitGuess">Submit Guess</button>
                 <div id="message"></div>
                 <button id="nextImage">Next Image</button>

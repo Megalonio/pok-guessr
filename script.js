@@ -32,344 +32,337 @@ class ImageGuessingGame {
 
         // Initialize
         this.loadImages();
+        this.updateSuggestions(); // Call this once to populate all suggestions
     }
 
     async loadImages() {
         // Pokemon image database with English and French names
         this.images = [
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/charizard.png',
-                answers: ['charizard', 'dracaufeu']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/pikachu.png',
-                answers: ['pikachu', 'pikachu']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/mewtwo.png',
-                answers: ['mewtwo', 'mewtwo']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/gyarados.png',
-                answers: ['gyarados', 'leviator']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/snorlax.png',
-                answers: ['snorlax', 'ronflex']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/dragonite.png',
-                answers: ['dragonite', 'dracolosse']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/gengar.png',
-                answers: ['gengar', 'ectoplasma']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/torterra.png',
-                answers: ['torterra', 'torterra']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/blaziken.png',
-                answers: ['blaziken', 'brasegali']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/luxray.png',
-                answers: ['luxray', 'luxray']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/staraptor.png',
-                answers: ['staraptor', 'etouraptor']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/swampert.png',
-                answers: ['swampert', 'laggron']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/aggron.png',
-                answers: ['aggron', 'galeking']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/heracross.png',
-                answers: ['heracross', 'scarhino']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/garchomp.png',
-                answers: ['garchomp', 'carchacrok']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/salamence.png',
-                answers: ['salamence', 'drattak']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/metagross.png',
-                answers: ['metagross', 'metalosse']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/tyranitar.png',
-                answers: ['tyranitar', 'tyranocif']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/empoleon.png',
-                answers: ['empoleon', 'pingoleon']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/infernape.png',
-                answers: ['infernape', 'simiabraz']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/flygon.png',
-                answers: ['flygon', 'libegon']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/electivire.png',
-                answers: ['electivire', 'elekable']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/magmortar.png',
-                answers: ['magmortar', 'maganon']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/togekiss.png',
-                answers: ['togekiss', 'togekiss']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/mamoswine.png',
-                answers: ['mamoswine', 'mammochon']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/weavile.png',
-                answers: ['weavile', 'dimoret']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/lucario.png',
-                answers: ['lucario', 'lucario']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/roserade.png',
-                answers: ['roserade', 'roserade']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/gallade.png',
-                answers: ['gallade', 'gallame']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/altaria.png',
-                answers: ['altaria', 'altaria']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/gliscor.png',
-                answers: ['gliscor', 'scorvol']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/spiritomb.png',
-                answers: ['spiritomb', 'spiritomb']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/dusknoir.png',
-                answers: ['dusknoir', 'noctunoir']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/froslass.png',
-                answers: ['froslass', 'momartik']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/porygon-z.png',
-                answers: ['porygon-z', 'porygon-z']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/rhyperior.png',
-                answers: ['rhyperior', 'rhinastoc']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/tangrowth.png',
-                answers: ['tangrowth', 'bouldeneu']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/milotic.png',
-                answers: ['milotic', 'milobellus']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/slowbro.png',
-                answers: ['slowbro', 'flagadoss']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/gardevoir.png',
-                answers: ['gardevoir', 'gardevoir']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/exeggutor.png',
-                answers: ['exeggutor', 'noadkoko']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/ambipom.png',
-                answers: ['ambipom', 'capidextre']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/donphan.png',
-                answers: ['donphan', 'donphan']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/houndoom.png',
-                answers: ['houndoom', 'demolosse']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/scizor.png',
-                answers: ['scizor', 'cizayox']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/venusaur.png',
-                answers: ['venusaur', 'florizarre']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/blastoise.png',
-                answers: ['blastoise', 'tortank']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/arcanine.png',
-                answers: ['arcanine', 'arcanin']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/nidoking.png',
-                answers: ['nidoking', 'nidoking']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/nidoqueen.png',
-                answers: ['nidoqueen', 'nidoqueen']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/clefable.png',
-                answers: ['clefable', 'melodelfe']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/wigglytuff.png',
-                answers: ['wigglytuff', 'grodoudou']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/poliwrath.png',
-                answers: ['poliwrath', 'tartard']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/vileplume.png',
-                answers: ['vileplume', 'rafflesia']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/victreebel.png',
-                answers: ['victreebel', 'empiflor']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/slowking.png',
-                answers: ['slowking', 'roigada']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/muk.png',
-                answers: ['muk', 'grotadmorv']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/cloyster.png',
-                answers: ['cloyster', 'crustabri']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/golem.png',
-                answers: ['golem', 'grolem']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/rapidash.png',
-                answers: ['rapidash', 'galopa']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/dodrio.png',
-                answers: ['dodrio', 'dodrio']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/dewgong.png',
-                answers: ['dewgong', 'lamantine']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/hitmonlee.png',
-                answers: ['hitmonlee', 'kicklee']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/hitmonchan.png',
-                answers: ['hitmonchan', 'tygnon']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/kangaskhan.png',
-                answers: ['kangaskhan', 'kangourex']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/tauros.png',
-                answers: ['tauros', 'tauros']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/lapras.png',
-                answers: ['lapras', 'lokhlass']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/omastar.png',
-                answers: ['omastar', 'amphinobi']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/kabutops.png',
-                answers: ['kabutops', 'kabutops']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/aerodactyl.png',
-                answers: ['aerodactyl', 'ptera']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/xatu.png',
-                answers: ['xatu', 'xatu']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/ampharos.png',
-                answers: ['ampharos', 'pharamp']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/bellossom.png',
-                answers: ['bellossom', 'joliflor']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/forretress.png',
-                answers: ['forretress', 'foretress']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/granbull.png',
-                answers: ['granbull', 'granbull']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/qwilfish.png',
-                answers: ['qwilfish', 'qwilfish']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/shuckle.png',
-                answers: ['shuckle', 'caratroc']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/octillery.png',
-                answers: ['octillery', 'octillery']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/mantine.png',
-                answers: ['mantine', 'demanta']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/skarmory.png',
-                answers: ['skarmory', 'airmure']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/hariyama.png',
-                answers: ['hariyama', 'hariyama']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/walrein.png',
-                answers: ['walrein', 'kaimorse']
-            },
-            {
-                path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/alakazam.png',
-                answers: ['alakazam', 'alakazam']
-            }
-        ];
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/venusaur.png',
+            answers: ['venusaur', 'florizarre']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/charizard.png',
+            answers: ['charizard', 'dracaufeu']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/blastoise.png',
+            answers: ['blastoise', 'tortank']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/butterfree.png',
+            answers: ['butterfree', 'papilusion']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/beedrill.png',
+            answers: ['beedrill', 'dardargnan']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/pidgeot.png',
+            answers: ['pidgeot', 'roucarnage']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/raticate.png',
+            answers: ['raticate', 'rattatac']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/fearow.png',
+            answers: ['fearow', 'rapasdepic']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/arbok.png',
+            answers: ['arbok', 'arbok']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/raichu.png',
+            answers: ['raichu', 'raichu']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/sandslash.png',
+            answers: ['sandslash', 'sablaireau']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/nidoqueen.png',
+            answers: ['nidoqueen', 'nidoqueen']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/nidoking.png',
+            answers: ['nidoking', 'nidoking']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/clefable.png',
+            answers: ['clefable', 'melodelfe']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/ninetales.png',
+            answers: ['ninetales', 'feunard']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/wigglytuff.png',
+            answers: ['wigglytuff', 'grodoudou']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/vileplume.png',
+            answers: ['vileplume', 'rafflesia']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/parasect.png',
+            answers: ['parasect', 'parasect']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/venomoth.png',
+            answers: ['venomoth', 'aéromite']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/dugtrio.png',
+            answers: ['dugtrio', 'triopikeur']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/persian.png',
+            answers: ['persian', 'persian']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/golduck.png',
+            answers: ['golduck', 'akwakwak']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/primeape.png',
+            answers: ['primeape', 'colossinge']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/arcanine.png',
+            answers: ['arcanine', 'arcanin']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/poliwrath.png',
+            answers: ['poliwrath', 'tartard']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/alakazam.png',
+            answers: ['alakazam', 'alakazam']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/machamp.png',
+            answers: ['machamp', 'mackogneur']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/victreebel.png',
+            answers: ['victreebel', 'empiflor']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/tentacruel.png',
+            answers: ['tentacruel', 'tentacruel']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/golem.png',
+            answers: ['golem', 'grolem']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/rapidash.png',
+            answers: ['rapidash', 'galopa']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/slowbro.png',
+            answers: ['slowbro', 'flagadoss']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/magneton.png',
+            answers: ['magneton', 'magneton']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/farfetchd.png',
+            answers: ['farfetchd', 'canarticho']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/dodrio.png',
+            answers: ['dodrio', 'dodrio']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/dewgong.png',
+            answers: ['dewgong', 'lamantine']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/muk.png',
+            answers: ['muk', 'grotadmorv']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/cloyster.png',
+            answers: ['cloyster', 'crustabri']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/gengar.png',
+            answers: ['gengar', 'ectoplasma']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/onix.png',
+            answers: ['onix', 'onix']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/hypno.png',
+            answers: ['hypno', 'hypnomade']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/kingler.png',
+            answers: ['kingler', 'krabboss']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/electrode.png',
+            answers: ['electrode', 'electrode']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/exeggutor.png',
+            answers: ['exeggutor', 'noadkoko']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/marowak.png',
+            answers: ['marowak', 'ossatueur']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/hitmonlee.png',
+            answers: ['hitmonlee', 'kicklee']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/hitmonchan.png',
+            answers: ['hitmonchan', 'tygnon']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/lickitung.png',
+            answers: ['lickitung', 'excelangue']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/weezing.png',
+            answers: ['weezing', 'smogogo']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/rhydon.png',
+            answers: ['rhydon', 'rhinoféros']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/chansey.png',
+            answers: ['chansey', 'leveinard']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/tangela.png',
+            answers: ['tangela', 'saquedeneu']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/kangaskhan.png',
+            answers: ['kangaskhan', 'kangourex']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/seadra.png',
+            answers: ['seadra', 'hypocéan']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/seaking.png',
+            answers: ['seaking', 'poissoroy']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/starmie.png',
+            answers: ['starmie', 'staross']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/mr-mime.png',
+            answers: ['mr-mime', 'm. mime']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/scyther.png',
+            answers: ['scyther', 'insécateur']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/jynx.png',
+            answers: ['jynx', 'lippoutou']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/electabuzz.png',
+            answers: ['electabuzz', 'élektek']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/magmar.png',
+            answers: ['magmar', 'magmar']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/pinsir.png',
+            answers: ['pinsir', 'scarabrute']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/tauros.png',
+            answers: ['tauros', 'tauros']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/gyarados.png',
+            answers: ['gyarados', 'leviator']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/lapras.png',
+            answers: ['lapras', 'lokhlass']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/ditto.png',
+            answers: ['ditto', 'métamorph']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/eevee.png',
+            answers: ['eevee', 'évoli']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/vaporeon.png',
+            answers: ['vaporeon', 'aquali']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/jolteon.png',
+            answers: ['jolteon', 'voltali']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/flareon.png',
+            answers: ['flareon', 'pyroli']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/porygon.png',
+            answers: ['porygon', 'porygon']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/omastar.png',
+            answers: ['omastar', 'amarinobi']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/kabutops.png',
+            answers: ['kabutops', 'kabutops']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/aerodactyl.png',
+            answers: ['aerodactyl', 'ptéra']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/snorlax.png',
+            answers: ['snorlax', 'ronflex']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/articuno.png',
+            answers: ['articuno', 'artikodin']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/zapdos.png',
+            answers: ['zapdos', 'électhor']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/moltres.png',
+            answers: ['moltres', 'sulfura']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/dragonite.png',
+            answers: ['dragonite', 'dracolosse']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/mewtwo.png',
+            answers: ['mewtwo', 'mewtwo']
+        },
+        {
+            path: 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/mew.png',
+            answers: ['mew', 'mew']
+        }
+    ];
         this.loadNextImage();
     }
 
@@ -378,22 +371,36 @@ class ImageGuessingGame {
     }
 
     loadNextImage() {
-    // Get a random index instead of incrementing
-    this.currentImageIndex = Math.floor(Math.random() * this.images.length);
-    
-    this.currentImage = this.images[this.currentImageIndex];
-    this.mainImage.src = this.currentImage.path;
-    this.resetAttempts();
-    this.updateCoverImage();
-    this.guessInput.value = '';
-    this.messageElement.textContent = '';
-    this.messageElement.className = '';
-    
-    // Re-enable controls and show cover image
-    this.guessInput.disabled = false;
-    this.submitButton.disabled = false;
-    this.coverImage.style.display = 'block';
-}
+        // Get a random index instead of incrementing
+        this.currentImageIndex = Math.floor(Math.random() * this.images.length);
+
+        this.currentImage = this.images[this.currentImageIndex];
+        this.mainImage.src = this.currentImage.path;
+        this.resetAttempts();
+        this.updateCoverImage();
+        this.guessInput.value = '';
+        this.messageElement.textContent = '';
+        this.messageElement.className = '';
+
+        // Re-enable controls and show cover image
+        this.guessInput.disabled = false;
+        this.submitButton.disabled = false;
+        this.coverImage.style.display = 'block';
+    }
+
+        updateSuggestions() {
+            const datalist = document.getElementById('pokemonSuggestions');
+            datalist.innerHTML = ''; // Clear previous suggestions
+
+            // Add all possible answers from all Pokémon
+            this.images.forEach(image => {
+                image.answers.forEach(answer => {
+                    const option = document.createElement('option');
+                    option.value = answer;
+                    datalist.appendChild(option);
+                });
+            });
+        }
 
     resetAttempts() {
         this.attemptsLeft = 5;
@@ -411,13 +418,13 @@ class ImageGuessingGame {
 
     checkGuess() {
         const guess = this.guessInput.value.trim().toLowerCase();
-        
+
         if (!guess) {
             this.showMessage('Please enter a guess!', 'error');
             return;
         }
 
-        const correctAnswers = this.currentImage.answers.map(answer => 
+        const correctAnswers = this.currentImage.answers.map(answer =>
             answer.toLowerCase().replace(/-/g, '')
         );
 
@@ -433,15 +440,19 @@ class ImageGuessingGame {
             this.attemptsLeft--;
             this.updateAttemptsDisplay();
             this.updateCoverImage();
-            
+
             if (this.attemptsLeft <= 0) {
                 this.showMessage('Game Over! The correct answer was: ' + this.currentImage.answers[0], 'error');
                 this.submitButton.disabled = true;
                 this.guessInput.disabled = true;
             } else {
-                this.showMessage('Wrong guess! Try again.', 'error');
+                // Custom error message with the user's guess
+                this.showMessage(`"${guess}" was wrong, try again!`, 'error');
             }
         }
+
+        // Clear the input bar after submission
+        this.guessInput.value = '';
     }
 
     showMessage(text, type) {
